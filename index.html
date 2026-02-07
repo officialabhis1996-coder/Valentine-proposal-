@@ -1,41 +1,114 @@
 <!DOCTYPE html>
-<html>
-<body style="font-family: Arial, sans-serif; background:#fff0f4; padding:25px; color:#333;">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
 
-<p>Hey Harshu Sandhya ❤️</p>
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffe6eb;
+    font-family: Arial, sans-serif;
+}
 
-<p>
-Pata hai… main words me kabhi perfect nahi hota,  
-par is baar dil se kuch banaya hai sirf tumhare liye 😌
-</p>
+/* Main Box */
+.box {
+    position: relative;
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 2;
+}
 
-<p>
-Tum meri smile ki wajah ho,  
-meri har dua ka reason ho 💕  
-Aur aaj ek simple sa sawaal hai…
-</p>
+button {
+    padding: 10px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+}
 
-<p style="margin-top:20px; font-size:18px;">
-👇 Is link ko open karo 👇
-</p>
+#yes {
+    background: #ff4d6d;
+    color: white;
+}
 
-<p>
-<a href="PASTE_YOUR_LINK_HERE"
-   style="background:#ff4d6d; color:white; padding:14px 22px;
-   text-decoration:none; border-radius:10px; font-size:18px; display:inline-block;">
-Open My Heart ❤️
-</a>
-</p>
+#no {
+    background: #ccc;
+    position: absolute;
+}
 
-<p style="margin-top:30px;">
-Jo bhi ho, jaise bhi ho…  
-tum mere liye hamesha special rahogi 💖
-</p>
+/* Photo */
+img {
+    width: 250px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
 
-<p style="margin-top:20px;">
-With all my love,<br>
-<b>Abhishek Chauhan</b> 💕
-</p>
+/* Heart Animation */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Hey Harshu Sandhya ❤️</h2>
+    <h2>Will you be my Valentine? 💘</h2>
+    <p>— Abhishek Chauhan</p>
+
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<script>
+function moveNo() {
+    const noBtn = document.getElementById("no");
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+}
+
+function yesClicked() {
+    document.body.innerHTML = `
+        <div class="box">
+            <h2>You are choosing the best option 😂❤️</h2>
+            <h1>Happy Valentine 💕</h1>
+            <img src="photo.jpg" alt="Couple Photo">
+            <p><strong>Abhishek Chauhan</strong> ❤️ <strong>Harshu Sandhya</strong></p>
+        </div>
+    `;
+}
+
+/* Hearts */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
 
 </body>
 </html>
